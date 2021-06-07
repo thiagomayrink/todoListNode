@@ -11,12 +11,18 @@ if (existsSync('./todos.json')){
 }
 
 function App(todoList) {
+
+    function saveChanges(todoList) {
+        writeFileSync('./todos.json', JSON.stringify(todoList, null, 4), 'utf-8');
+    }
+    
     function addItem(item) {
         const todo = { check: false, name: "" };
         todo.name = item.toString();
         todoList = [...todoList, todo];
-        writeFileSync('./todos.json', JSON.stringify(todoList, null, 4), 'utf-8');
+        saveChanges(todoList);
     }
+
     function renderTodoList() {
         const myTodoList = todoList.map((t)=>{
             if (t.check === false){
@@ -26,17 +32,16 @@ function App(todoList) {
             }
         })
         return myTodoList;
-        console.log(myTodoList)
     }
 
     function removeItem(item) {
         todoList.splice(item)
-        writeFileSync('./todos.json', JSON.stringify(todoList, null, 4), 'utf-8');
+        saveChanges(todoList);
     }
 
-    function toggleCheck(index) {
-        todoList[index].check = !todoList[index].check;
-        writeFileSync('./todos.json', JSON.stringify(todoList, null, 4), 'utf-8');
+    function toggleCheck(item) {
+        todoList[item].check = !todoList[item].check;
+        saveChanges(todoList);
     }
     
     if (todoList){
@@ -50,8 +55,8 @@ function App(todoList) {
         }
         if (functions[index] === 'list') {
             renderTodoList()
-            const index = parseInt(readlineSync.keyInSelect(renderTodoList(), 'What task do you want to check/uncheck? '))
-            toggleCheck(index);
+            const item = parseInt(readlineSync.keyInSelect(renderTodoList(), 'What task do you want to check/uncheck? '))
+            item !== -1 ? toggleCheck(item) : App(todoList);
         }
         if (functions[index] === 'remove') {
             renderTodoList()
