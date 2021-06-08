@@ -1,22 +1,24 @@
 [
     {
         "check": true,
-        "name": "codar"
+        "name": "codar",
+        "pomodoro": 2
     },
     {
         "check": true,
-        "name": "jantar"
+        "name": "jantar",
+        "pomodoro": 1
     },
     {
-        "check": false,
+        "check": true,
         "name": "dormir"
     },
     {
-        "check": false,
+        "check": true,
         "name": "acordar cedo"
     },
     {
-        "check": true,
+        "check": false,
         "name": "codar mais"
     }
 ]
