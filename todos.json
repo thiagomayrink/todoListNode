@@ -14,5 +14,9 @@
     {
         "check": false,
         "name": "acordar cedo"
+    },
+    {
+        "check": true,
+        "name": "codar mais"
     }
 ]
