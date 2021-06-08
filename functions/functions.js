@@ -48,9 +48,11 @@ function toggleCheck(todoList, item) {
 };
 function doPomodoro(todoList,item) {
     const spinner = ora(`Doing Pomodoro of ${chalk.bold(`${todoList[item].name}`)}`).start();
-    setTimeout(() => {
+    setTimeout(()=>{
         spinner.color = 'magenta';
-        spinner.text = '🍅...⏰';
+        spinner.text = '🍅 ... ⏰';
+    }, 2000)
+    setTimeout(() => {
         if (todoList[item].pomodoro > 0){
             todoList[item].pomodoro +=1;
             saveChanges(todoList);
