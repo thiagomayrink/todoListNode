@@ -15,6 +15,7 @@ function loadFiles() {
 };
 function saveChanges(todoList) {
     writeFileSync('./data/todos.json', JSON.stringify(todoList, null, 4), 'utf-8');
+    loadFiles();
 };
 function addItem(todoList, item) {
     const todo = { check: false, name: "" };
