@@ -4,7 +4,6 @@ function saveChanges(todoList) {
     writeFileSync('./todos.json', JSON.stringify(todoList, null, 4), 'utf-8');
 }
 function addItem(todoList, item) {
-    console.log('executado')
     const todo = { check: false, name: "" };
     todo.name = item.toString();
     todoList = [...todoList, todo];
